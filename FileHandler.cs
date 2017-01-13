@@ -5,18 +5,19 @@ using System.Xml.Linq;
 
 namespace Statistik
 {
+
 	/// <summary>
 	/// Description of FileHandler.
 	/// </summary>
 	public class FileHandler
 	{
-		public FileHandler()
+		/// <summary>
+		/// Reads XML-file with saved statisticts
+		/// </summary>
+		/// <returns>Statisticsobject from data in file</returns>
+		public Statistics Read ()
 		{
-		}
-		
-		public Statistics read ()
-		{
-			int i=0;
+			int i = 0;
 			Statistics s = new Statistics();
 			if (File.Exists(@"H:\Statistics.xml"))
 			{
@@ -32,17 +33,23 @@ namespace Statistik
 
 						s.addItem(si);
 					}
+					
 					return s;
-				} catch (Exception e)
-				{
+				} catch (IOException e) {
 					MessageBox.Show("Error reading file (" + i + ")\r\n\r\n"+ e.Message);
 					return s;
 				}
+				
 			}
+			
 			return null;
 		}
 
-		public void write (Statistics statistics)
+		/// <summary>
+		/// Writes the statistics to an XML-file
+		/// </summary>
+		/// <param name="statistics">All statistics</param>
+		public void Write (Statistics statistics)
 		{
 			try
 			{
@@ -57,9 +64,10 @@ namespace Statistik
 					stat.Value = si.ItemName;
 					doc.Element("statistics").Add(stat);
 				}
+				
 				doc.Save(@"H:\Statistics.xml");
 			}catch(IOException e){
-				MessageBox.Show("Error while writing statisticsfile\r\n\r\n" + e.Message, "");
+				MessageBox.Show("Error while writing statisticsfile\r\n\r\n" + e.Message, string.Empty);
 			}
 		}
 	}

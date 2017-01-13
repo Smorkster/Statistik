@@ -19,10 +19,16 @@ namespace Statistik
 			allstatistics.Add(item);
 		}
 
+		public void addItem(string name)
+		{
+			allstatistics.Add(new StatisticsItem(name));
+		}
+
 		public void deleteItem(string name)
 		{
 			int index = allstatistics.FindIndex(x => x.ItemName.Equals(name));
-			allstatistics.RemoveAt(index);
+			if(index != -1)
+				allstatistics.RemoveAt(index);
 		}
 
 		public int numberOfItems()
@@ -35,6 +41,14 @@ namespace Statistik
 			int index = allstatistics.FindIndex(x => x.ItemName.Equals(name));
 			
 			allstatistics[index].ItemCount++;
+			return allstatistics[index].ItemCount;
+		}
+
+		public int countSubtracted (string name)
+		{
+			int index = allstatistics.FindIndex(x => x.ItemName.Equals(name));
+			
+			allstatistics[index].ItemCount--;
 			return allstatistics[index].ItemCount;
 		}
 

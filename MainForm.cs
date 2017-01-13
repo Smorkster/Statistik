@@ -16,7 +16,7 @@ namespace Statistik
 		public MainForm()
 		{
 			InitializeComponent();
-			statistics = new FileHandler().read();
+			statistics = new FileHandler().Read();
 			populateStatistics();
 		}
 
@@ -24,11 +24,11 @@ namespace Statistik
 		{
 			foreach (StatisticsItem si in statistics.getItemList())
 			{
-				createNewPair(si);
+				createNewStat(si);
 			}
 		}
 
-		void createNewPair (StatisticsItem si)
+		string createNewStat (StatisticsItem si)
 		{
 			string name = "";
 			int count = 0;
@@ -43,7 +43,7 @@ namespace Statistik
 					nin.ShowDialog();
 					if (nin.DialogResult == DialogResult.Cancel)
 					{
-						return;
+						return null;
 					}
 					if (!statistics.itemExists(nin.getName()))
 					{
@@ -78,7 +78,7 @@ namespace Statistik
 			newButton.Location = new Point(120, (i * 30) - 5);
 			newButton.Text = name;
 			newButton.Name = "btn" + name;
-			newButton.Click += moreStatistics;
+			newButton.MouseDown += moreStatistics;
 			newButton.FlatStyle = FlatStyle.Flat;
 			newButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			newButton.AutoSize = true;
@@ -89,6 +89,7 @@ namespace Statistik
 			flowLayoutPanel.Controls.Add(newButton);
 			flowLayoutPanel.SetFlowBreak(newButton, true);
 			ResumeLayout(false);
+			return name;
 		}
 
 		void menuClose_Click (object sender, EventArgs e)
@@ -97,19 +98,25 @@ namespace Statistik
 		}
 		void menuNew_Click (object sender, EventArgs e)
 		{
-			createNewPair(null);
+			statistics.addItem(createNewStat(null));
 		}
 
-		public void moreStatistics (object sender, EventArgs ea)
+		public void moreStatistics (object sender, MouseEventArgs e)
 		{
 			string labelName = "lb" + (sender as Button).Text;
-			int number = statistics.getCounts((sender as Button).Text) + 1;
-			statistics.countAdded((sender as Button).Text);
+			MouseEventArgs ea = (MouseEventArgs) e;
+			if (e.Button == MouseButtons.Right)
+				statistics.countSubtracted((sender as Button).Text);
+			else
+				statistics.countAdded((sender as Button).Text);
+			
+			int number = statistics.getCounts((sender as Button).Text);
 			flowLayoutPanel.Controls.Find(labelName, true)[0].Text = number.ToString();
 		}
+
 		void menuSave_Click (object sender, EventArgs e)
 		{
-			new FileHandler().write(statistics);
+			new FileHandler().Write(statistics);
 		}
 
 		public void removeStat (object sender, EventArgs ea)

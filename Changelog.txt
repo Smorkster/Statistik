@@ -1,3 +1,9 @@
-﻿Version 1.0
+﻿Version 1.1
+***********
+Corrected logic for removal of stat, now checks if allstatistics is empty
+Now also adds stat in allstatistics, not only adds buttons
+Rightclicking on statbutton now subtracts the count
+
+Version 1.0
 ***********
 Initial release

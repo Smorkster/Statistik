@@ -7,3 +7,12 @@ h:\Statistik\bin\Debug\Statistik.exe
 h:\Statistik\bin\Debug\Statistik.pdb
 h:\Statistik\obj\Debug\Statistik.exe
 h:\Statistik\obj\Debug\Statistik.pdb
+H:\Programmering\Statistik\bin\Debug\Statistik.exe.config
+H:\Programmering\Statistik\bin\Debug\Statistik.exe
+H:\Programmering\Statistik\bin\Debug\Statistik.pdb
+H:\Programmering\Statistik\obj\Debug\Statistik.csprojResolveAssemblyReference.cache
+H:\Programmering\Statistik\obj\Debug\Statistik.MainForm.resources
+H:\Programmering\Statistik\obj\Debug\Statistik.NewItemName.resources
+H:\Programmering\Statistik\obj\Debug\Statistik.csproj.GenerateResource.Cache
+H:\Programmering\Statistik\obj\Debug\Statistik.exe
+H:\Programmering\Statistik\obj\Debug\Statistik.pdb
