@@ -1,0 +1,9 @@
+h:\Statistik\obj\Debug\Statistik.csprojResolveAssemblyReference.cache
+h:\Statistik\obj\Debug\Statistik.MainForm.resources
+h:\Statistik\obj\Debug\Statistik.NewItemName.resources
+h:\Statistik\obj\Debug\Statistik.csproj.GenerateResource.Cache
+h:\Statistik\bin\Debug\Statistik.exe.config
+h:\Statistik\bin\Debug\Statistik.exe
+h:\Statistik\bin\Debug\Statistik.pdb
+h:\Statistik\obj\Debug\Statistik.exe
+h:\Statistik\obj\Debug\Statistik.pdb
