@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Statistik</RootNamespace>
-    <AssemblyName>Statistik</AssemblyName>
+    <AssemblyName>Statistics</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <AppDesignerFolder>Properties</AppDesignerFolder>
   </PropertyGroup>
@@ -51,10 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileHandler.cs" />
-    <Compile Include="NewItemName.cs" />
-    <Compile Include="NewItemName.Designer.cs">
-      <DependentUpon>NewItemName.cs</DependentUpon>
-    </Compile>
     <Compile Include="Statistics.cs" />
     <Compile Include="MainForm.cs" />
     <Compile Include="MainForm.Designer.cs">
@@ -71,9 +67,6 @@
   <ItemGroup>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewItemName.resx">
-      <DependentUpon>NewItemName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

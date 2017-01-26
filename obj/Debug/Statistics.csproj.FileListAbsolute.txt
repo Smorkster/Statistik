@@ -1,0 +1,17 @@
+H:\Programmering\Statistik\bin\Debug\Statistics.exe.config
+H:\Programmering\Statistik\bin\Debug\Statistics.exe
+H:\Programmering\Statistik\bin\Debug\Statistics.pdb
+H:\Programmering\Statistik\obj\Debug\Statistics.csprojResolveAssemblyReference.cache
+H:\Programmering\Statistik\obj\Debug\Statistics.csproj.GenerateResource.Cache
+H:\Programmering\Statistik\obj\Debug\Statistics.exe
+H:\Programmering\Statistik\obj\Debug\Statistics.pdb
+H:\Programmering\Statistik\obj\Debug\Statistics.MainForm.resources
+H:\Programmering\Statistik\obj\Debug\Statistics.SaveAs.resources
+H:\Programmering\Statistics\bin\Debug\Statistics.exe.config
+H:\Programmering\Statistics\bin\Debug\Statistics.exe
+H:\Programmering\Statistics\bin\Debug\Statistics.pdb
+H:\Programmering\Statistics\obj\Debug\Statistics.csprojResolveAssemblyReference.cache
+H:\Programmering\Statistics\obj\Debug\Statistics.MainForm.resources
+H:\Programmering\Statistics\obj\Debug\Statistics.csproj.GenerateResource.Cache
+H:\Programmering\Statistics\obj\Debug\Statistics.exe
+H:\Programmering\Statistics\obj\Debug\Statistics.pdb

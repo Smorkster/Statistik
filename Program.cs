@@ -1,18 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Windows.Forms;
 
-namespace Statistik
+namespace Statistics
 {
 	internal sealed class Program
 	{
 		[STAThread]
-		private static void Main(string[] args)
+		private static void Main()
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainForm());
 		}
-		
 	}
 }

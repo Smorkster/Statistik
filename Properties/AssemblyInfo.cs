@@ -6,10 +6,10 @@ using System.Runtime.InteropServices;
 
 #endregion
 
-[assembly: AssemblyTitle("Statistik")]
-[assembly: AssemblyProduct("Statistik")]
+[assembly: AssemblyTitle("Statistics")]
+[assembly: AssemblyProduct("Statistics")]
 [assembly: AssemblyCopyright("Copyright 2016")]
 
 [assembly: ComVisible(false)]
 
-[assembly: AssemblyVersion("1.1")]
+[assembly: AssemblyVersion("2.0")]

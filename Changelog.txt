@@ -1,4 +1,28 @@
-﻿Version 1.1
+﻿Version 2.0
+***********
+Remove unused integer MainForm.i
+Now also clears controls for cleared statistics
+Now adds statistics count correctly to new item
+Controls for statistics is no longer tabbable
+Added functionality to enable/disable menuitem for saving
+Now automaticaly saves when application closes
+Added labels to show totalcount of statistics
+Startsize of mainform set as minimum size
+Renamed createNewStat -> createNewStatControls
+Renamed populateStatistics -> populateStatisticsControls
+Renamed flowLayoutPanel -> controlsPanel
+Now sorts statistics when new item is added
+Question to clear statistics now only shows if user saves file in "SaveAs"
+Added functionality to add comments
+Added functionality to save as textfile
+Added functionality for autocompletion of statisticsitemname
+Redesign of adding new statistics items
+Renamed to english
+Added functionality to save to other location
+Added functionality to clear statistics
+Added more documentation on functions
+
+Version 1.1
 ***********
 Corrected logic for removal of stat, now checks if allstatistics is empty
 Now also adds stat in allstatistics, not only adds buttons

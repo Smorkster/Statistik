@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-namespace Statistik
+namespace Statistics
 {
 	public class StatisticsItem
 	{
@@ -11,25 +10,20 @@ namespace Statistik
 		public StatisticsItem(string name)
 		{
 			itemName = name;
-			itemCount = 0;
+			itemCount = 1;
 		}
 
-		public string ItemName
-		{
-			get
-			{
+		public string ItemName {
+			get {
 				return itemName;
 			}
 		}
 
-		public int ItemCount
-		{
-			get
-			{
+		public int ItemCount {
+			get {
 				return itemCount;
 			}
-			set
-			{
+			set {
 				itemCount = value;
 			}
 		}
