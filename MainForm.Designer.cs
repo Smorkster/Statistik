@@ -21,6 +21,8 @@ namespace Statistics
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.ToolStripMenuItem menuSaveAt;
 		private System.Windows.Forms.ToolStripMenuItem menuSaveAsText;
+		private System.Windows.Forms.Button btnShowList;
+		private System.Windows.Forms.ContextMenuStrip cmenuItemList;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -43,6 +45,7 @@ namespace Statistics
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuSaveAsSubmenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,6 +60,8 @@ namespace Statistics
 			this.lblTotItems = new System.Windows.Forms.Label();
 			this.txtComment = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnShowList = new System.Windows.Forms.Button();
+			this.cmenuItemList = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -135,9 +140,9 @@ namespace Statistics
 			| System.Windows.Forms.AnchorStyles.Right)));
 			this.txtStatisticsName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
 			this.txtStatisticsName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-			this.txtStatisticsName.Location = new System.Drawing.Point(0, 27);
+			this.txtStatisticsName.Location = new System.Drawing.Point(0, 28);
 			this.txtStatisticsName.Name = "txtStatisticsName";
-			this.txtStatisticsName.Size = new System.Drawing.Size(444, 20);
+			this.txtStatisticsName.Size = new System.Drawing.Size(379, 20);
 			this.txtStatisticsName.TabIndex = 0;
 			this.txtStatisticsName.TextChanged += new System.EventHandler(this.txtStatisticsName_TextChanged);
 			// 
@@ -146,7 +151,7 @@ namespace Statistics
 			this.btnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnNew.AutoSize = true;
 			this.btnNew.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.btnNew.Location = new System.Drawing.Point(450, 25);
+			this.btnNew.Location = new System.Drawing.Point(385, 26);
 			this.btnNew.Name = "btnNew";
 			this.btnNew.Size = new System.Drawing.Size(61, 23);
 			this.btnNew.TabIndex = 2;
@@ -188,11 +193,29 @@ namespace Statistics
 			this.label1.TabIndex = 6;
 			this.label1.Text = "Comments:";
 			// 
+			// btnShowList
+			// 
+			this.btnShowList.AutoSize = true;
+			this.btnShowList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.btnShowList.Location = new System.Drawing.Point(452, 27);
+			this.btnShowList.Name = "btnShowList";
+			this.btnShowList.Size = new System.Drawing.Size(59, 23);
+			this.btnShowList.TabIndex = 7;
+			this.btnShowList.Text = "Show list";
+			this.btnShowList.UseVisualStyleBackColor = true;
+			this.btnShowList.Click += new System.EventHandler(this.btnShowList_Click);
+			// 
+			// cmenuItemList
+			// 
+			this.cmenuItemList.Name = "cmenuItemList";
+			this.cmenuItemList.Size = new System.Drawing.Size(61, 4);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(511, 633);
+			this.Controls.Add(this.btnShowList);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.txtComment);
 			this.Controls.Add(this.lblTotItems);

@@ -1,4 +1,4 @@
-﻿Version 2.0
+﻿Version 2.1
 ***********
 Remove unused integer MainForm.i
 Now also clears controls for cleared statistics
@@ -16,6 +16,13 @@ Question to clear statistics now only shows if user saves file in "SaveAs"
 Added functionality to add comments
 Added functionality to save as textfile
 Added functionality for autocompletion of statisticsitemname
+Added button to show list of autocompletionitems, clicking in list sets txtStatisticsName to item
+If new item already exists in statisticsdata add to count
+Clearing txtStatisticsName after addition to statistics count
+Moved all functionality of adding/subtracting count to statisticsitems to separate functions
+
+Version 2.0
+***********
 Redesign of adding new statistics items
 Renamed to english
 Added functionality to save to other location

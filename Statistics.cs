@@ -8,7 +8,7 @@ namespace Statistics
 	public class Statistics
 	{
 		List<StatisticsItem> allstatistics;
-		string comments="";
+		string comments = "";
 		AutoCompleteStringCollection autocompletelist;
 
 		public Statistics()
@@ -41,7 +41,7 @@ namespace Statistics
 		/// <param name="name">Name of item to create</param>
 		public void addItem(string name)
 		{
-			allstatistics.Add(new StatisticsItem(name));
+			allstatistics.Add(new StatisticsItem(name,1));
 			allstatistics = allstatistics.OrderBy(x => x.ItemName).ToList();
 		}
 
@@ -64,6 +64,10 @@ namespace Statistics
 			}
 		}
 
+		/// <summary>
+		/// Adds a list of items to be used for autocompletion of statisticsnames
+		/// </summary>
+		/// <param name="l">The list of autocompletionitems</param>
 		public void addAutoCompleteList(AutoCompleteStringCollection l)
 		{
 			autocompletelist = l;
@@ -108,7 +112,7 @@ namespace Statistics
 		{
 			int index = allstatistics.FindIndex(x => x.ItemName.Equals(name));
 			
-			allstatistics[index].ItemCount++;
+			allstatistics[index].AddItemCount();
 			return allstatistics[index].ItemCount;
 		}
 
@@ -121,7 +125,7 @@ namespace Statistics
 		{
 			int index = allstatistics.FindIndex(x => x.ItemName.Equals(name));
 			
-			allstatistics[index].ItemCount--;
+			allstatistics[index].SubtractItemCount();
 			return allstatistics[index].ItemCount;
 		}
 

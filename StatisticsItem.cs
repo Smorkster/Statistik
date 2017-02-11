@@ -7,10 +7,10 @@ namespace Statistics
 		string itemName;
 		int itemCount;
 
-		public StatisticsItem(string name)
+		public StatisticsItem(string name, int count)
 		{
 			itemName = name;
-			itemCount = 1;
+			itemCount = count;
 		}
 
 		public string ItemName {
@@ -23,14 +23,16 @@ namespace Statistics
 			get {
 				return itemCount;
 			}
-			set {
-				itemCount = value;
-			}
 		}
 
 		public void AddItemCount()
 		{
-			itemCount++;
+			itemCount = itemCount++;
+		}
+		
+		public void SubtractItemCount()
+		{
+			itemCount = itemCount--;
 		}
 	}
 }

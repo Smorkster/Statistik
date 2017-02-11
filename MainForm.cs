@@ -14,11 +14,24 @@ namespace Statistics
 		public MainForm()
 		{
 			InitializeComponent();
-			statistics = new FileHandler().Read();
+			statistics = FileHandler.Read();
 			statistics.addAutoCompleteList(new FileHandler().getAutoCompleteList());
 			txtStatisticsName.AutoCompleteCustomSource = statistics.getAutoCompleteList();
 			
 			populateStatisticsControls();
+		}
+
+		/// <summary>
+		/// Menuitem in autocompletionlist is pressed
+		/// Use that text in the name for new statisticsitem
+		/// </summary>
+		/// <param name="sender">Generic object</param>
+		/// <param name="e">Generic EventArgs</param>
+		void cmenuItemUse(object sender, EventArgs e)
+		{
+			txtStatisticsName.Text = "";
+			txtStatisticsName.Text = sender.ToString();
+			ActiveControl = btnNew;
 		}
 
 		/// <summary>
@@ -79,7 +92,7 @@ namespace Statistics
 
 		/// <summary>
 		/// Adds or subtracts to the count of the statistics
-		/// Is based on which mousebutton i used
+		/// Is based on which mousebutton is used
 		/// </summary>
 		/// <param name="sender">Generic object</param>
 		/// <param name="e">Generic MouseEventArgs</param>
@@ -95,6 +108,7 @@ namespace Statistics
 			int number = statistics.getCounts((sender as Button).Text);
 			controlsPanel.Controls.Find(labelName, true)[0].Text = number.ToString();
 			updateCountLabel();
+			txtStatisticsName.Text = "";
 			ActiveControl = txtStatisticsName;
 			menuSave.Enabled = true;
 		}
@@ -160,20 +174,40 @@ namespace Statistics
 		}
 
 		/// <summary>
+		/// Opens a list of the items used for autocompletion
+		/// </summary>
+		/// <param name="sender">Generic object</param>
+		/// <param name="e">Generic EventArgs</param>
+		void btnShowList_Click(object sender, EventArgs e)
+		{
+			cmenuItemList.Items.Clear();
+			foreach (var item in statistics.getAutoCompleteList()) {
+				cmenuItemList.Items.Add(item.ToString(), null, cmenuItemUse);
+			}
+			cmenuItemList.Show(btnShowList, 0, 0);
+		}
+
+		/// <summary>
 		/// Create a new statisticsitem based on text given i textbox
 		/// </summary>
 		/// <param name="sender">Generic object</param>
 		/// <param name="e">Generic EventArgs</param>
 		void btnNew_Click(object sender, EventArgs e)
 		{
-			statistics.addItem(createNewStatControls(null));
-			statistics.addAutoCompleteItem(txtStatisticsName.Text);
+			if (statistics.itemExists(txtStatisticsName.Text)) {
+				statistics.countAdded(txtStatisticsName.Text);
+				controlsPanel.Controls.Find("lb" + txtStatisticsName.Text, true)[0].Text = statistics.getCounts(txtStatisticsName.Text).ToString();
+			} else {
+				statistics.addItem(createNewStatControls(null));
+				statistics.addAutoCompleteItem(txtStatisticsName.Text);
+				controlsPanel.Controls.Clear();
+				populateStatisticsControls();
+			}
 			txtStatisticsName.Text = "";
-			controlsPanel.Controls.Clear();
-			populateStatisticsControls();
 			updateCountLabel();
 			updateItemCountLabel();
 			menuSave.Enabled = true;
+			ActiveControl = txtStatisticsName;
 		}
 
 		/// <summary>
@@ -241,7 +275,7 @@ namespace Statistics
 			dialog.FileName = "Statistics of " + today.Year + " " + today.ToString("MMM") + ".xml";
 			
 			if (dialog.ShowDialog() == DialogResult.OK) {
-				new FileHandler().Write(statistics, dialog.FileName);
+				FileHandler.Write(statistics, dialog.FileName);
 				if (MessageBox.Show("Clear statistics?", "Clear?", MessageBoxButtons.YesNo) == DialogResult.Yes)
 					statistics.Clear();
 			}
@@ -277,7 +311,7 @@ namespace Statistics
 		void menuSaveAsText_Click(object sender, EventArgs e)
 		{
 			statistics.Comments = txtComment.Text;
-			new FileHandler().WriteTextFile(statistics);
+			FileHandler.WriteTextFile(statistics);
 		}
 	}
 }

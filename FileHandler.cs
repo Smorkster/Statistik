@@ -17,19 +17,15 @@ namespace Statistics
 		/// Reads XML-file with saved statisticts
 		/// </summary>
 		/// <returns>Statisticsobject from data in file</returns>
-		public Statistics Read()
+		public static Statistics Read()
 		{
-			int i = 0;
 			string file = @"H:\Statistics.xml";
 			Statistics s = new Statistics();
 			if (File.Exists(file)) {
 				try {
 					XDocument doc = XDocument.Load(file);
 					foreach (XElement e in doc.Descendants("statisticsitem")) {
-						i = 1;
-						StatisticsItem si = new StatisticsItem(e.Value);
-						i = 2;
-						si.ItemCount = int.Parse(e.Attribute("count").Value);
+						StatisticsItem si = new StatisticsItem(e.Value, int.Parse(e.Attribute("count").Value));
 
 						s.addItem(si);
 					}
@@ -46,6 +42,10 @@ namespace Statistics
 			return null;
 		}
 
+		/// <summary>
+		/// Reads the file for a list of items to be used for autocompletion
+		/// </summary>
+		/// <returns>A list of autocompletionitems</returns>
 		public AutoCompleteStringCollection getAutoCompleteList()
 		{
 			string file = @"H:\StatisticsAutoComplete.xml";
@@ -72,11 +72,11 @@ namespace Statistics
 		}
 
 		/// <summary>
-		/// The user wants to save the statistics to a separate file
+		/// Writing all files
 		/// </summary>
 		/// <param name="stats">The statistics to be saved</param>
 		/// <param name="filename">Name and location of where to save the statistics</param>
-		public void Write(Statistics stats, string filename)
+		public static void Write(Statistics stats, string filename)
 		{
 			try {
 				XDocument doc = new XDocument(), autocompletedoc = new XDocument();
@@ -84,7 +84,7 @@ namespace Statistics
 				autocompletedoc.Declaration = new XDeclaration("1.0", "utf8", "yes");
 
 				XElement root = new XElement("statistics"),
-					rootautocomplete = new XElement("saclist");
+				rootautocomplete = new XElement("saclist");
 
 				doc.Add(root);
 				autocompletedoc.Add(rootautocomplete);
@@ -100,8 +100,7 @@ namespace Statistics
 					doc.Element("statistics").Add(comments);
 				}
 
-				foreach(var item in stats.getAutoCompleteList())
-				{
+				foreach (var item in stats.getAutoCompleteList()) {
 					XElement aci = new XElement("sacitem");
 					aci.Value = item.ToString();
 					autocompletedoc.Element("saclist").Add(aci);
@@ -117,7 +116,7 @@ namespace Statistics
 		/// <summary>
 		/// Write the statistics to a readable textfile
 		/// </summary>
-		public void WriteTextFile(Statistics stats)
+		public static void WriteTextFile(Statistics stats)
 		{
 			string text = stats.Comments + "\n";
 			text = text + "********************************\n\n===== Collected statistics =====";
